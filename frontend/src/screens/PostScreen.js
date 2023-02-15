@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { View, SafeAreaView, ScrollView, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+import { View, SafeAreaView, ScrollView, Text, StyleSheet, TouchableOpacity } from "react-native";
 import CheckBox from "../components/CheckBox";
+import Button from "../components/Button";
 
 import Input from "../components/Input";
 import COLORS from "../constants/color";
@@ -37,9 +38,9 @@ const PostScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView contentContainerStyle={{ paddingTop: 36, paddingHorizontal: 16 }}>
-                <Text style={{ color: "#000", fontSize: 24, fontWeight: "bold" }}>Room Information</Text>
-                <View style={{ paddingVertical: 16 }}>
+            <ScrollView contentContainerStyle={{ paddingHorizontal: 16 }}>
+                {/* <Text style={{ color: "#000", fontSize: 24, fontWeight: "bold" }}>Room Information</Text> */}
+                <View style={{ paddingTop: 8, paddingBottom: 32 }}>
                     <Input label='Room Area' suffix='m&sup2;' placeholder='Enter the room area' />
                     <Input label='Capacity' suffix='person(s)/room' placeholder='Number of people/room' />
                     <Input label='Expenses' suffix='VND/month' placeholder='Enter the rental price' />
@@ -49,7 +50,7 @@ const PostScreen = () => {
                     <Input label='Internet Cost' suffix='VND' optionFree={true} placeholder='The amount of money' />
                     <CheckBox isChecked={isChecked} onPress={toggleCheckBox} label='Is there space for parking?' />
                     {isChecked && <Input label='Parking Cost' suffix='VND' placeholder='The amount of money' />}
-                    <Button onPress={fetchData} title='Click Here' />
+                    <Button onPress={fetchData} title='Publish Post' />
                 </View>
             </ScrollView>
         </SafeAreaView>

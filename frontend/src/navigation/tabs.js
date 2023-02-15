@@ -70,6 +70,13 @@ const Tabs = () => {
                             {/* <Text style={{ color: focused ? COLORS.red : COLORS.grey, fontSize: 12 }}>Post</Text> */}
                         </View>
                     ),
+                    headerShown: true,
+                    header: () => (
+                        <View style={styles.header}>
+                            <Text style={styles.title}>Create Post</Text>
+                            <Text style={styles.cancelBtn}>Cancel</Text>
+                        </View>
+                    ),
                 }}
             />
             <Tab.Screen
@@ -110,15 +117,33 @@ const Tabs = () => {
 
 export default Tabs;
 
-// const styles = StyleSheet.create({
-//     shadow: {
-//         shadowColor: "#7F5DF0",
-//         shadowOffset: {
-//             width: 0,
-//             height: 10,
-//         },
-//         shadowOpacity: 0.25,
-//         shadowRadius: 3.5,
-//         elevation: 5,
-//     },
-// });
+const styles = StyleSheet.create({
+    // shadow: {
+    //     shadowColor: "#7F5DF0",
+    //     shadowOffset: {
+    //         width: 0,
+    //         height: 10,
+    //     },
+    //     shadowOpacity: 0.25,
+    //     shadowRadius: 3.5,
+    //     elevation: 5,
+    // },
+    header: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        height: 55,
+        marginTop: 24,
+        position: "relative",
+        borderBottomColor: COLORS.black,
+        borderBottomWidth: 0.5,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: "500",
+    },
+    cancelBtn: {
+        position: "absolute",
+        right: 24,
+    },
+});
