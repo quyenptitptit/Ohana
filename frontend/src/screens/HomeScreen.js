@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Text>Home Screen</Text>
-            <Button title='Home Screen' onPress={() => alert("Button Clicked!")} />
+            <Button title='Home Screen' onPress={() => navigation.navigate('Login')} />
         </View>
     );
 };

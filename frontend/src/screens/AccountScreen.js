@@ -1,11 +1,32 @@
-import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, SafeAreaView, ScrollView, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import Button from "../components/Button";
+import Input from "../components/Input";
+import COLORS from "../constants/color";
+import LoginScreen from "./LoginScreen";
+import RegisterScreen from "./RegisterScreen";
+import InformationScreen from "./InformationScreen";
+import UpdateInforScreen from "./UpdateInforScreen";
 
-const AccountScreen = () => {
+
+const AccountScreen = ({navigation, route}) => {
+    const [isCheckAuthen, setIsCheckAuthen] = useState(true)
+    const [isCheckUpdate, setIsCheckUpdate] = useState(false)
+    const [isCheckSignUp, setIsCheckSignUp] = useState(false)
+
     return (
         <View style={styles.container}>
-            <Text>Account Screen</Text>
-            <Button title='Account Screen' onPress={() => alert("Button Clicked!")} />
+            {isCheckAuthen ? (
+                isCheckSignUp ?
+                    <RegisterScreen setIsCheckSignUp={setIsCheckSignUp} />
+                    :
+                    <LoginScreen route={route} navigation={navigation} setIsCheckSignUp={setIsCheckSignUp} setIsCheckAuthen={setIsCheckAuthen} />
+            ) : (
+                isCheckUpdate ?
+                    <UpdateInforScreen setIsCheckUpdate={setIsCheckUpdate} setIsCheckAuthen={setIsCheckAuthen} setIsCheckSignUp={setIsCheckSignUp} />
+                    :
+                    <InformationScreen setIsCheckUpdate={setIsCheckUpdate} />
+            )}
         </View>
     );
 };
@@ -14,9 +35,8 @@ export default AccountScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#8fcbbc",
+        // flex: 1,
+        backgroundColor: COLORS.white,
+        marginBottom: 68,
     },
 });

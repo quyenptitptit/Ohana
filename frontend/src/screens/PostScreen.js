@@ -24,8 +24,8 @@ const PostScreen = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    firstParam: "Trinh",
-                    secondParam: "TrungVan",
+                    firstParam: "firstParam",
+                    secondParam: "secondParam",
                 }),
             });
             const json = await response.json();

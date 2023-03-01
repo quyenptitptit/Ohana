@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import CheckBox from "./CheckBox";
 
-const Input = ({ label, suffix, error, password, optionFree, onFocus = () => {}, ...props }) => {
+const Input = ({ label, suffix, error, password, value, optionFree, secureTextEntry, onFocus = () => {}, onChangeText = () => {}, ...props }) => {
     const [isChecked, setIsChecked] = useState(false);
 
     return (
@@ -10,7 +10,7 @@ const Input = ({ label, suffix, error, password, optionFree, onFocus = () => {},
             <Text style={styles.label}>{label}</Text>
             <View style={styles.container}>
                 <View style={{ ...styles.inputContainer, width: optionFree ? "80%" : "100%" }}>
-                    <TextInput {...props} />
+                    <TextInput {...props} value={value} onChangeText={onChangeText} secureTextEntry={secureTextEntry} />
                     <Text>{suffix}</Text>
                 </View>
                 {optionFree && <CheckBox isChecked={isChecked} onPress={() => setIsChecked(!isChecked)} label='Free' />}
